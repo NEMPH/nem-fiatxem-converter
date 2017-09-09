@@ -11,6 +11,7 @@ PriceConverter.fromFiat("USD", 12d).ToXem();
 ```
 
 <h2>To Fiat</h2>
+
 ```java
 PriceConverter.fromXem("12").ToFiat("CAD");
 ```
