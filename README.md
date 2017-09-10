@@ -21,8 +21,7 @@ Need help integration your Java Application with NEM.io Platform? I can definite
 
 [telegram](https://web.telegram.org/#/im?p=@brambear)
 
-
-Tips are appreciated but not required. :)  
+Tips are appreciated but not required. :bowtie: :muscle: :metal:  
 XEM: NA6IT2-ZSTQLT-YO223Z-ZMH2J7-2GVG7G-ZY72FN-47IF  
 BTC: 3JYAYPxN9RL4UvbxMd1svbQynMpFbf5ehy 
 
