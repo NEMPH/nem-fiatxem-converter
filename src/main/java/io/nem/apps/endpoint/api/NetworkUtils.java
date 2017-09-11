@@ -9,9 +9,8 @@ import org.asynchttpclient.Response;
  * The Class NetworkUtils.
  */
 public class NetworkUtils {
-
+	private static AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
 	public static CompletableFuture<Response> getAsync(EndPoints endpoint, String query) {
-		AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
 		return asyncHttpClient.prepareGet(endpoint + query).execute().toCompletableFuture();
 	}
 
