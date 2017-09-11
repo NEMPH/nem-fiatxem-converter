@@ -8,9 +8,11 @@ Simplest and Straight forward API for converting any currency to XEM!
 
 ```java
 
-FiatsXem converter = PriceConverter.fromFiat("PHP",2.00).fromFiat("USD",2.00).toXem();
+FiatsXem converter = PriceConverter
+	.fromFiat("PHP",2.00)
+	.fromFiat("USD",2.00)
+	.toXem();
 
-	
 BigDecimal xemFromCad = converter.getXemPriceFor("PHP"); // returns xem equivalent of PHP 2.00
 BigDecimal xemFromUsd = converter.getXemPriceFor("USD"); // returns xem equivalent of USD 2.00
 
@@ -20,8 +22,7 @@ BigDecimal xemFromUsd = converter.getXemPriceFor("USD"); // returns xem equivale
 <h2>To Fiat</h2>
 
 ```java
-XemFiat converter = PriceConverter
-	.fromXem(2.00)
+XemFiat converter = PriceConverter.fromXem(2.00)
 	.toFiat("USD")
 	.toFiat("PHP")
 	.convert();
