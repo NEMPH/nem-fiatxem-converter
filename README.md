@@ -4,6 +4,24 @@ Java API for converting any FIAT Currency to XEM!
 
 Simplest and Straight forward API for converting any currency to XEM!
 
+<h2>How to build</h2>
+
+```bash
+git clone https://github.com/NEMPH/nem-fiatxem-converter.git
+cd nem-fiatxem-converter
+mvn clean install
+```
+
+Import it as a maven dependency
+
+```xml
+<dependency>
+    <groupId>io.nem.apps</groupId>
+    <artifactId>nem-fiatxem-converter</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
 <h2>To Xem</h2>
 
 ```java
@@ -15,7 +33,6 @@ FiatsXem converter = PriceConverter
 
 BigDecimal xemFromCad = converter.getXemPriceFor("PHP"); // returns xem equivalent of PHP 2.00
 BigDecimal xemFromUsd = converter.getXemPriceFor("USD"); // returns xem equivalent of USD 2.00
-
 
 ```
 
