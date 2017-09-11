@@ -28,7 +28,7 @@ XemFiat converter = PriceConverter.fromXem(2.00)
 	.convert();
 	
 BigDecimal phpXemPrice = converter.getPriceOf("PHP"); // returns the PHP price of XEM 2.00
-BigDecimal usdXemPrice = converter.getPriceOf("USD"); // returns the USD price of XEM 2.0
+BigDecimal usdXemPrice = converter.getPriceOf("USD"); // returns the USD price of XEM 2.00
 
 
 ```
