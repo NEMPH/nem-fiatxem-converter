@@ -1,6 +1,12 @@
 package io.nem.apps.converter;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
+
+import io.nem.apps.model.FiatsXem;
+import io.nem.apps.model.XemFiat;
 import io.nem.apps.service.PriceCompute;
 
 public class PriceConverter {
@@ -26,38 +32,38 @@ public class PriceConverter {
 
 	public interface IToXem {
 
-		IBuild applyFees(Double fees);
+		IToXem fromFiat(String symbol, String fiatAmount);
 
-		Double ToXem();
+		IToXem fromFiat(String symbol, Double fiatAmount);
+
+		IToXem fromFiat(String symbol);
+
+		FiatsXem toXem();
+
 	}
 
 	public interface IToFiat {
 
-		IBuild applyFees(Double fees);
+		IToFiat toFiat(String symbol);
 
-		Double ToFiat(String symbol);
+		 XemFiat convert();
 	}
 
-	public interface IBuild {
-		Double compute();
-	}
-
-	private static class Builder implements IToXem, IToFiat, IBuild {
+	private static class Builder implements IToXem, IToFiat {
 
 		private String fiatSymbol = "";
 		private Double fiatAmount = 0d;
 		private Double fees;
 		private Double xem = 0d;
 		private Double computedPrice = 0d;
+		private ConcurrentHashMap<String, String> conversionKv = new ConcurrentHashMap<String, String>();
 
 		public Builder(String symbol, Double fiatAmount) {
-			this.fiatAmount = fiatAmount;
-			this.fiatSymbol = symbol;
+			this.conversionKv.put(symbol, String.valueOf(fiatAmount));;
 		}
 
 		public Builder(String symbol, String fiatAmount) {
-			this.fiatAmount = Double.valueOf(fiatAmount);
-			this.fiatSymbol = symbol;
+			this.conversionKv.put(symbol, fiatAmount);
 		}
 
 		public Builder(Double xemAmount) {
@@ -69,16 +75,33 @@ public class PriceConverter {
 		}
 
 		@Override
-		public IBuild applyFees(Double fees) {
-			this.fees = fees;
+		public IToFiat toFiat(String symbol) {
+			this.conversionKv.put(symbol, "1.0");
 			return this;
 		}
 
 		@Override
-		public Double compute() {
+		public IToXem fromFiat(String symbol) {
+			this.conversionKv.put(symbol, "1.0");
+			return this;
+		}
+
+		@Override
+		public IToXem fromFiat(String symbol, String fiatAmount) {
+			this.conversionKv.put(symbol, fiatAmount);
+			return this;
+		}
+
+		@Override
+		public IToXem fromFiat(String symbol, Double fiatAmount) {
+			this.conversionKv.put(symbol, String.valueOf(fiatAmount));
+			return this;
+		}
+
+		@Override
+		public  XemFiat convert() {
 			try {
-				this.computedPrice = PriceCompute.getFiatToXem(this.fiatSymbol, String.valueOf(this.fiatAmount));
-				return computedPrice;
+				return PriceCompute.getXemToFiats(this.xem,this.conversionKv);
 			} catch (InterruptedException | ExecutionException e) {
 				e.printStackTrace();
 			}
@@ -86,15 +109,9 @@ public class PriceConverter {
 		}
 
 		@Override
-		public Double ToXem() {
-			return this.compute();
-		}
-
-		@Override
-		public Double ToFiat(String symbol) {
+		public FiatsXem toXem() {
 			try {
-				this.computedPrice = PriceCompute.getXemToFiat(symbol, String.valueOf(this.xem));
-				return computedPrice;
+				return PriceCompute.getFiatsToXem(this.conversionKv);
 			} catch (InterruptedException | ExecutionException e) {
 				e.printStackTrace();
 			}

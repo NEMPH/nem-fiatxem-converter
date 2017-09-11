@@ -3,8 +3,8 @@ package io.nem.apps.endpoint.api;
 public enum EndPoints {
 
 	CC_COIN_LIST("https://www.cryptocompare.com/api/data/coinlist/"),
-	CC_FIAT_TO_XEM("https://min-api.cryptocompare.com/data/price"),
-	CC_XEM_TO_FIAT("https://min-api.cryptocompare.com/data/price");
+	CC_CONV_SINGLE("https://min-api.cryptocompare.com/data/price"),
+	CC_CONV_MULTI("https://min-api.cryptocompare.com/data/pricemulti");
 	
 	/** The value. */
 	private final String value;
