@@ -1,9 +1,18 @@
 package io.nem.apps.endpoint.api;
 
+
+/**
+ * The Enum EndPoints.
+ */
 public enum EndPoints {
 
+	/** The cc coin list. */
 	CC_COIN_LIST("https://www.cryptocompare.com/api/data/coinlist/"),
+	
+	/** The cc conv single. */
 	CC_CONV_SINGLE("https://min-api.cryptocompare.com/data/price"),
+	
+	/** The cc conv multi. */
 	CC_CONV_MULTI("https://min-api.cryptocompare.com/data/pricemulti");
 	
 	/** The value. */

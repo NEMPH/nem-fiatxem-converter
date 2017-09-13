@@ -10,10 +10,18 @@ import com.google.gson.JsonParseException;
 import io.nem.apps.model.Coin;
 import io.nem.apps.model.Coins;
 
+
+/**
+ * The Class CoinsDeserializer.
+ */
 public class CoinsDeserializer implements JsonDeserializer<Coins> {
 
+	/** The gson. */
 	private static Gson gson = new Gson();
 
+	/* (non-Javadoc)
+	 * @see com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement, java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
+	 */
 	@Override
 	public Coins deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
 		Coins coins = new Coins();

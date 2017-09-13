@@ -16,10 +16,24 @@ import io.nem.apps.model.FiatsXem;
 import io.nem.apps.model.Price;
 import io.nem.apps.model.XemFiat;
 
+
+/**
+ * The Class PriceCompute.
+ */
 public class PriceCompute {
 
+	/** The gson. */
 	private static Gson gson = GlobalConfig.getInstance().getGson();
 
+	/**
+	 * Gets the fiat to xem.
+	 *
+	 * @param fiatSymbol the fiat symbol
+	 * @param fiatAmount the fiat amount
+	 * @return the fiat to xem
+	 * @throws InterruptedException the interrupted exception
+	 * @throws ExecutionException the execution exception
+	 */
 	public static Double getFiatToXem(String fiatSymbol, String fiatAmount)
 			throws InterruptedException, ExecutionException {
 
@@ -32,6 +46,14 @@ public class PriceCompute {
 
 	}
 
+	/**
+	 * Gets the fiats to xem.
+	 *
+	 * @param conversionKv the conversion kv
+	 * @return the fiats to xem
+	 * @throws InterruptedException the interrupted exception
+	 * @throws ExecutionException the execution exception
+	 */
 	public static FiatsXem getFiatsToXem(Map<String, String> conversionKv) throws InterruptedException, ExecutionException {
 
 		String multipleSym = "";
@@ -55,6 +77,15 @@ public class PriceCompute {
 
 	}
 
+	/**
+	 * Gets the xem to fiats.
+	 *
+	 * @param xem the xem
+	 * @param conversionKv the conversion kv
+	 * @return the xem to fiats
+	 * @throws InterruptedException the interrupted exception
+	 * @throws ExecutionException the execution exception
+	 */
 	public static XemFiat getXemToFiats(Double xem, Map<String, String> conversionKv)
 			throws InterruptedException, ExecutionException {
 
@@ -78,6 +109,15 @@ public class PriceCompute {
 
 	}
 
+	/**
+	 * Gets the xem to fiat.
+	 *
+	 * @param fiatSymbol the fiat symbol
+	 * @param fiatAmount the fiat amount
+	 * @return the xem to fiat
+	 * @throws InterruptedException the interrupted exception
+	 * @throws ExecutionException the execution exception
+	 */
 	public static Double getXemToFiat(String fiatSymbol, String fiatAmount)
 			throws InterruptedException, ExecutionException {
 

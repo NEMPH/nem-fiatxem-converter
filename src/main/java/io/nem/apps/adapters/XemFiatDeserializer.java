@@ -13,8 +13,15 @@ import com.google.gson.JsonParseException;
 import io.nem.apps.model.Price;
 import io.nem.apps.model.XemFiat;
 
+
+/**
+ * The Class XemFiatDeserializer.
+ */
 public class XemFiatDeserializer implements JsonDeserializer<XemFiat> {
 
+	/* (non-Javadoc)
+	 * @see com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement, java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
+	 */
 	@Override
 	public XemFiat deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
 		

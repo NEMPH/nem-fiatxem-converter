@@ -15,8 +15,15 @@ import io.nem.apps.model.FiatsXem;
 import io.nem.apps.model.Price;
 import io.nem.apps.model.XemFiat;
 
+
+/**
+ * The Class FiatsXemDeserializer.
+ */
 public class FiatsXemDeserializer implements JsonDeserializer<FiatsXem> {
 
+	/* (non-Javadoc)
+	 * @see com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement, java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
+	 */
 	@Override
 	public FiatsXem deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
 		

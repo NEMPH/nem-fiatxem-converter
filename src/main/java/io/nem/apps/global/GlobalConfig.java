@@ -12,15 +12,32 @@ import io.nem.apps.model.FiatsXem;
 import io.nem.apps.model.Price;
 import io.nem.apps.model.XemFiat;
 
+
+/**
+ * The Class GlobalConfig.
+ */
 public class GlobalConfig {
+	
+	/** The gson. */
 	private static Gson gson = null;
+	
+	/** The instance. */
 	private static GlobalConfig instance;
 	
+	/**
+	 * Gets the single instance of GlobalConfig.
+	 *
+	 * @return single instance of GlobalConfig
+	 */
 	public static GlobalConfig getInstance() {
 		if(instance == null) 
 			instance = new GlobalConfig();
 		return instance;
 	}
+	
+	/**
+	 * Instantiates a new global config.
+	 */
 	private GlobalConfig() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(Coins.class, new CoinsDeserializer());
@@ -30,6 +47,11 @@ public class GlobalConfig {
 		gson = gsonBuilder.create();
 	}
 	
+	/**
+	 * Gets the gson.
+	 *
+	 * @return the gson
+	 */
 	public Gson getGson() {
 		return gson;
 	}
